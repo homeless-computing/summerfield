@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# quadratic.py
+
 import cmath
 import math
 import sys
@@ -7,24 +9,24 @@ import sys
 def get_float(msg, allow_zero, default):
     x = None
     while x is None:
-#        try:
+        try:
             x = input(msg)
-            if x is None and default is not None:
+            if x == "" and default is not None:
                 x = float(default)
             else:
                 x = float(x)
             if not allow_zero and abs(x) < sys.float_info.epsilon:
                 print("zero is not allowed!")
                 x = None
-#        except ValueError as err:
-#            print(err)
-#            x = None
+        except ValueError as err:
+            print(err)
+            x = None
     return x
 
 print("ax\N{SUPERSCRIPT TWO} + bx + c = 0")
-a = get_float("enter a: ", False, 1)
-b = get_float("enter b: ", True, 0)
-c = get_float("enter c: ", True, 0)
+a = get_float(msg = "enter a: ", allow_zero = False, default = 1)
+b = get_float(msg = "enter b: ", allow_zero = True)
+c = get_float(msg = "enter c: ", allow_zero = True, default = 0)
 
 x1 = None
 x2 = None
